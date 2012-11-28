@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+
+Voorbeeld van een directe prijs matrix per lijn
+
+Dit is een voorbeeld voor de levering van 
+- Direkte prijs matrix voor een  lijn 12
+- Direkte prijs matrix voor een  lijn 14
+
+Zie toelichting in PPT Fase 1 document Bijlage B. 
+
+Let op, nog te doen: toevoegen name spaces
+	
+-->
+<PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex http://bison.connekt.nl/netex/NetexXML-v0.98.7/NeTEx_publication.xsd">
+	<PublicationTimestamp>2012-01-29T09:30:47.0Z</PublicationTimestamp>
+		<ParticipantRef>nvt</ParticipantRef>
+		<dataObjects>
+		<CompositeFrame version="DataOwner:1.0" id="DataOwner:CompositeFrame001">
+			<FrameDefaults>
+				<!-- ===== De data owner die deze informatie levering doet -->
+				<DefaultDataSourceRef ref="DataOwner:DataOwner"/>
+			</FrameDefaults>
+			<frames>
+				<!-- ========== Het resource frame bevat meta / stam data definities die elders (via een ref) gebruikt worden. -->
+				<ResourceFrame version="DataOwner:1.0" id="DataOwner:ResourceFrame001">
+					<dataSources>
+						<!-- ===== Definitie van de data owner -->
+						<DataSource version="DataOwner:1.0" id="DataOwner:DataOwner">
+							<Name>DataOwnerHTM</Name> <!-- Hier komt de BISON enum -->
+							<Description>HTM PPT data owner</Description>
+							<Email>planner-ppt@htm.nl</Email>
+						</DataSource>
+					</dataSources>
+					<versions>
+						<!-- ===== Definitie van de versie -->
+						<Version id="DataOwner:1.0" version="DataOwner:1.0">
+							<StartDate>2012-01-29T00:00:00.0Z</StartDate>
+							<EndDate>2013-01-29T23:59:59.0Z</EndDate>
+							<Description>versie 1.0</Description>
+						</Version>
+					</versions>
+				</ResourceFrame>
+				<!-- ========== Het service frame bevat de dienstregeling gerelateerde meta / stam gegevens en wrappers voor gerefereerde KV1 informatie objecten -->
+				<ServiceFrame version="DataOwner:1.0" id="DataOwner:ServiceFrame001">
+					<Network version="DataOwner:1.0" id="DataOwner:Amersfoort">
+						<Name>Buslijnen Amersfoort</Name>
+						<groupsOfLines>
+							<GroupOfLines version="DataOwner:1.0" id="DataOwner:LineGroup-Amersfoort">
+								<Name>Buslijnen Amersfoort</Name>
+								<members>
+									<LineRef ref="DataOwner:Line012"/>
+									<LineRef ref="DataOwner:Line014"/>
+								</members>
+							</GroupOfLines>
+						</groupsOfLines>
+					</Network>
+					<lines>
+						<!-- ===== De Line informatie objecten met de doorverwijzing naar de KV1 lijn definities -->
+						<Line version="DataOwner:1.0" id="DataOwner:Line012">
+							<KeyList>
+								<KeyValue>
+									<Key>KV1PlanningLijnNummer</Key>
+									<Value>12</Value>
+								</KeyValue>
+							</KeyList>
+							<Name>lijn 12</Name>
+						</Line>
+						<Line version="DataOwner:1.0" id="DataOwner:Line014">
+							<KeyList>
+								<KeyValue>
+									<Key>KV1PlanningLijnNummer</Key>
+									<Value>14</Value>
+								</KeyValue>
+							</KeyList>
+							<Name>lijn 14</Name>
+						</Line>
+					</lines>
+					<scheduledStopPoints>
+						<!-- ===== De scheduled stop points. -->
+						<!-- ===== De informatie objecten met de doorverwijzing naar de KV1 user stops -->
+						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2024">
+							<projections>
+								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-001">
+									<ProjectedPointRef ref="DataOwner:DataOwner:4357" nameOfRefClass="KV1UserStop"/>
+								</PointProjection>
+								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-002">
+									<ProjectedPointRef ref="DataOwner:4356" nameOfRefClass="KV1UserStop"/>
+								</PointProjection>
+							</projections>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2104">
+							<projections>
+								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-003">
+									<ProjectToPointRef ref="DataOwner:4358" nameOfRefClass="KV1UserStop"/>
+								</PointProjection>
+							</projections>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2234">
+							<projections>
+								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-004">
+									<ProjectToPointRef ref="DataOwner:4359" nameOfRefClass="KV1UserStop"/>
+								</PointProjection>
+							</projections>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2875">
+							<projections>
+								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-005">
+									<ProjectToPointRef ref="DataOwner:4360" nameOfRefClass="KV1UserStop"/>
+								</PointProjection>
+							</projections>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2900">
+							<projections>
+								<PointProjection version="DataOwner:1.0" id="DataOwner:PP006">
+									<ProjectToPointRef ref="DataOwner:4361" nameOfRefClass="KV1UserStop"/>
+								</PointProjection>
+							</projections>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+				</ServiceFrame>
+				<!-- ========== Het Fare frame met alle tarief structuur informatie -->
+				<FareFrame version="DataOwner:1.0" id="DataOwner:FareFrame001">
+					<KeyList>
+						<KeyValue>
+							<Key>RoundingWrtCurrencyRule</Key>
+							<Value>0.01</Value>
+						</KeyValue>
+						<KeyValue>
+							<Key>CappingWrtCurrencyRule</Key>
+							<Value>100</Value>
+						</KeyValue>
+						<KeyValue>
+							<Key>EntranceRateWrtCurrency</Key>
+							<Value>0.79</Value>
+						</KeyValue>
+					</KeyList>
+					<Name>Fare structuur voor bus, lijn 12 en 14 in Amersfoort</Name>
+					<FrameDefaults>
+						<DefaultCurrency>EUR</DefaultCurrency>
+					</FrameDefaults>
+					<!-- ===== De content validity conditions voor de fare structures in dit frame.-->
+					<contentValidityConditions>
+						<!-- ===== Geldigheid structuur voor de scope van de directe prijs matrix A, lijn 12 -->
+						<ValidityTrigger version="DataOwner:1.0" id="DataOwner:ValidityTrigger-Prijstabel-Lijn12-001">
+							<ConditionedObjectRef ref="DataOwner:Matrix-12" nameOfRefClass="FareStructure" />
+							<TriggerObjectRef ref="DataOwner:Amersfoort" nameOfRefClass="Network" />
+							<WithConditionRef ref="DataOwner:ValidityTrigger-Prijstabel-Lijn12-002"/>
+						</ValidityTrigger>
+						<ValidityTrigger version="DataOwner:1.0" id="DataOwner:ValidityTrigger-Prijstabel-Lijn12-002">
+							<ConditionedObjectRef ref="DataOwner:Matrix-12" nameOfRefClass="FareStructure" />
+							<TriggerObjectRef ref="DataOwner:Line-12" nameOfRefClass="Line" />
+						</ValidityTrigger>
+						<!-- ===== Geldigheid structuur voor de scope van de directe prijs matrix A, lijn 14 -->
+						<ValidityTrigger version="DataOwner:1.0" id="DataOwner:ValidityTrigger-Prijstabel-Lijn14-001">
+							<ConditionedObjectRef ref="DataOwner:Matrix-14" nameOfRefClass="FareStructure" />
+							<TriggerObjectRef ref="DataOwner:Amersfoort" nameOfRefClass="Network" />
+							<WithConditionRef ref="DataOwner:ValidityTrigger-Prijstabel-Lijn14-002"/>
+						</ValidityTrigger>
+						<ValidityTrigger version="DataOwner:1.0" id="DataOwner:ValidityTrigger-Prijstabel-Lijn14-002">
+							<ConditionedObjectRef ref="DataOwner:Matrix-14" nameOfRefClass="FareStructure" />
+							<TriggerObjectRef ref="DataOwner:Line-14" nameOfRefClass="Line" />
+						</ValidityTrigger>
+					</contentValidityConditions>
+					<fareStructures>
+						<!-- ===== De directe prijs matrix voor lijn 12. -->
+						<!-- ===== Dat dit daadwerkelijk voor deze scope vastgelegd is, blijkt uit de content validity conditions -->
+						<FareStructure version="1.0" id="DataOwner:Matrix-12">
+							<!-- ===== Extensie voor de definitie van het FareStructureType -->
+							<KeyList>
+								<KeyValue>
+									<!-- FareStructure type voor declaratie van een afstand matrix -->
+									<Key>FareStructureType</Key>
+									<Value>DirectPriceMatrix</Value>
+								</KeyValue>
+								<KeyValue>
+									<!-- Matrix type voor de declratie van asymmetrische structuur -->
+									<Key>DistanceMatrixType</Key>
+									<Value>AsymmetricalMatrix</Value>
+								</KeyValue>
+							</KeyList>
+							<Name>Directe prijs matrix lijn 12</Name>
+							<distanceMatrixElements>
+								<!-- ===== De matrix elementen voor lijn 12 -->
+								<DistanceMatrixElement version="DataOwner:1.0" id="DataOwner:Matrix-12-001">
+									<StartStopPointRef ref="DataOwner:SSP:001"/>
+									<EndStopPointRef ref="DataOwner:SSP:002"/>
+									<prices>
+										<DistanceMatrixElementPrice version="DataOwner:1.0" id="DataOwner:DMEP001">
+											<Amount>10</Amount>
+											<Units>0.01</Units>
+										</DistanceMatrixElementPrice>
+									</prices>
+								</DistanceMatrixElement>
+								<DistanceMatrixElement version="DataOwner:1.0" id="DataOwner:Matrix-12-002">
+									<StartStopPointRef ref="DataOwner:SSP:002"/>
+									<EndStopPointRef ref="DataOwner:SSP:001"/>
+									<prices>
+										<DistanceMatrixElementPrice version="DataOwner:1.0" id="DataOwner:DMEP002">
+											<Amount>19</Amount>
+											<Units>0.01</Units>
+										</DistanceMatrixElementPrice>
+									</prices>
+								</DistanceMatrixElement>
+							</distanceMatrixElements>
+						</FareStructure>
+						<!-- ===== De afstand matrix voor lijn 14. -->
+						<!-- ===== Dat dit daadwerkelijk voor deze scope vastgelegd is, blijkt uit de content validity condition structuur -->
+						<FareStructure version="1.0" id="DataOwner:Matrix-14">
+							<!-- ===== Extensie voor de definitie van het FareStructureType -->
+							<KeyList>
+								<KeyValue>
+									<!-- FareStructure type voor declaratie van een afstand matrix -->
+									<Key>FareStructureType</Key>
+									<Value>DirectPriceMatrix</Value>
+								</KeyValue>
+								<KeyValue>
+									<!-- Matrix type voor de declratie van symmetrische structuur -->
+									<Key>DistanceMatrixType</Key>
+									<Value>SymmetricalMatrix</Value>
+								</KeyValue>
+							</KeyList>
+							<Name>Directe prijs matrix lijn 14</Name>
+							<distanceMatrixElements>
+								<!-- ===== De matrix elementen voor lijn 14 -->
+								<DistanceMatrixElement version="DataOwner:1.0" id="DataOwner:Matrix-14-001">
+									<StartStopPointRef ref="DataOwner:SSP:002"/>
+									<EndStopPointRef ref="DataOwner:SSP:003"/>
+									<prices>
+										<DistanceMatrixElementPrice version="DataOwner:1.0" id="DataOwner:DMEP003">
+											<Amount>11</Amount>
+											<Units>0.01</Units>
+										</DistanceMatrixElementPrice>										
+									</prices>
+								</DistanceMatrixElement>
+								<DistanceMatrixElement version="DataOwner:1.0" id="DataOwner:Matrix-14-002">
+									<StartStopPointRef ref="DataOwner:SSP:003"/>
+									<EndStopPointRef ref="DataOwner:SSP:004"/>
+									<prices>
+										<DistanceMatrixElementPrice version="DataOwner:1.0" id="DataOwner:DMEP004">
+											<Amount>6</Amount>
+											<Units>0.01</Units>
+										</DistanceMatrixElementPrice>										
+									</prices>
+								</DistanceMatrixElement>
+							</distanceMatrixElements>
+						</FareStructure>
+					</fareStructures>
+				</FareFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
+<!-- THE END -->
