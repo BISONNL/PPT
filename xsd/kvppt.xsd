@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Copyright:	Dit document is eigendom van Platform BISON onder de Stichting Connekt,-->
+<!--            en wordt gepubliceerd onder de Creative Commons Licentie by-nd/3.0/nl, -->
+<!--            zie http://creativecommons.org/licences/by-nd/3.0/nl -->
+<!-- Opmerking: XSD is gebaseerd op TMI8 koppelvlak PPT versie 8.1.4 -->
+<!-- Historie: -->
+<!-- v8.1.0.0: eerste release -->
+<!-- v8.1.2.0: IFFStation toegevoegd als mogelijke nameOfRefClass -->
+<!-- v8.1.3.0: aangepast aan NeTEx 1.03 -->
+<!-- v8.1.4:  correctie multipliciteit van DataSource/Description, FareFrame/FareFrameDefaults en FareFrameDefaults/DefaultCurrency -->
+<!--             correctie volgorde contentValidityConditions em PricingParameterSet in FareFrame -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:net="http://www.netex.org.uk/netex" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="PublicationDelivery" type="net:PublicationDelivery"/>
+	<xs:complexType name="DefaultDataSourceRef">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ref" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="CompositeFrameDefaults">
+		<xs:sequence>
+			<xs:element name="DefaultDataSourceRef" type="net:DefaultDataSourceRef" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FareFrameDefaults">
+		<xs:sequence>
+			<xs:element name="DefaultCurrency" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DataSource">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<!-- ShortName bevat de DataOwnerCode (enum) -->
+			<xs:element name="ShortName" type="xs:string"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+			<xs:element name="Email" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+		<!-- id is als volgt opgebouwd:  "BISON:DataSource:<DataOwnerCode>" -->
+	</xs:complexType>
+	<xs:complexType name="dataSources">
+		<xs:sequence>
+			<xs:element name="DataSource" type="net:DataSource"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Version">
+		<xs:sequence>
+			<xs:element name="StartDate" type="xs:dateTime"/>
+			<xs:element name="EndDate" type="xs:dateTime"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="versions">
+		<xs:sequence>
+			<xs:element name="Version" type="net:Version"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResourceFrame">
+		<xs:sequence>
+			<xs:element name="dataSources" type="net:dataSources"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="LineRef">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ref" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="members">
+		<xs:sequence>
+			<xs:element name="LineRef" type="net:LineRef" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GroupOfLines">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="members" type="net:members"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="groupsOfLines">
+		<xs:sequence>
+			<xs:element name="GroupOfLines" type="net:GroupOfLines" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Network">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="groupsOfLines" type="net:groupsOfLines"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="KeyValue">
+		<xs:sequence>
+			<xs:element name="Key" type="xs:string"/>
+			<xs:element name="Value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KeyList">
+		<xs:sequence>
+			<xs:element name="KeyValue" type="net:KeyValue" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Line">
+		<xs:sequence>
+			<xs:element name="keyList" type="net:KeyList"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="version" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="lines">
+		<xs:sequence>
+			<xs:element name="Line" type="net:Line" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProjectedPointRef">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ref" type="xs:string" use="optional"/>
+				<xs:attribute name="nameOfRefClass" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="PointProjection">
+		<xs:sequence>
+			<xs:element name="ProjectedPointRef" type="net:ProjectedPointRef"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="version" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="projections">
+		<xs:sequence>
+			<xs:element name="PointProjection" type="net:PointProjection" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ScheduledStopPoint">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="projections" type="net:projections"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="version" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="scheduledStopPoints">
+		<xs:sequence>
+			<xs:element name="ScheduledStopPoint" type="net:ScheduledStopPoint" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ServiceFrame">
+		<xs:sequence>
+			<xs:element name="Network" type="net:Network"/>
+			<xs:element name="lines" type="net:lines"/>
+			<xs:element name="scheduledStopPoints" type="net:scheduledStopPoints"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="ConditionedObjectRef">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ref" type="xs:string" use="optional"/>
+				<xs:attribute name="nameOfRefClass" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="TriggerObjectRef">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ref" type="xs:string" use="optional"/>
+				<xs:attribute name="nameOfRefClass" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="ValidityTrigger">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+			<xs:element name="ConditionedObjectRef" type="net:ConditionedObjectRef"/>
+			<xs:element name="WithConditionRef" type="net:WithConditionRef" minOccurs="0"/>
+			<xs:element name="TriggerObjectRef" type="net:TriggerObjectRef"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="version" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="contentValidityConditions">
+		<xs:sequence>
+			<xs:element name="ValidityTrigger" type="net:ValidityTrigger" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GeographicalIntervalPrice">
+		<xs:sequence>
+			<xs:element name="Amount" type="xs:float"/>
+			<xs:element name="Units" type="xs:float"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="version" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="DistanceMatrixElementPrice">
+		<xs:sequence>
+			<xs:element name="Amount" type="xs:float"/>
+			<xs:element name="Units" type="xs:float"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="version" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="prices">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="GeographicalIntervalPrice" type="net:GeographicalIntervalPrice"/>
+				<xs:element name="DistanceMatrixElementPrice" type="net:DistanceMatrixElementPrice"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GeographicalInterval">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="StartGeographicalValue" type="xs:nonNegativeInteger"/>
+			<xs:element name="EndGeographicalValue" type="xs:nonNegativeInteger"/>
+			<xs:element name="prices" type="net:prices"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="geographicalIntervals">
+		<xs:sequence>
+			<xs:element name="GeographicalInterval" type="net:GeographicalInterval" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Tariff">
+		<xs:sequence>
+			<xs:element name="keyList" type="net:KeyList"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<xs:choice>
+				<xs:element name="geographicalIntervals" type="net:geographicalIntervals"/>
+				<xs:element name="distanceMatrixElements" type="net:distanceMatrixElements"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="version" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="tariffs">
+		<xs:sequence>
+			<xs:element name="Tariff" type="net:Tariff" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FareFrame">
+		<xs:sequence>
+			<xs:element name="keyList" type="net:KeyList"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="FrameDefaults" type="net:FareFrameDefaults"/>
+			<xs:element name="contentValidityConditions" type="net:contentValidityConditions"/>
+			<xs:element name="PricingParameterSet" type="net:PricingParameterSet" minOccurs="0"/>
+			<xs:element name="tariffs" type="net:tariffs"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="version" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="WithConditionRef">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ref" type="xs:string" use="optional"/>
+				<xs:attribute name="nameOfRefClass" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="StartStopPointRef">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ref" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="EndStopPointRef">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ref" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="DistanceMatrixElement">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="Distance" type="xs:nonNegativeInteger" minOccurs="0"/>
+			<xs:element name="InverseAllowed" type="xs:boolean"/>
+			<xs:element name="StartStopPointRef" type="net:StartStopPointRef"/>
+			<xs:element name="EndStopPointRef" type="net:EndStopPointRef"/>
+			<xs:element name="prices" type="net:prices" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="version" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="distanceMatrixElements">
+		<xs:sequence>
+			<xs:element name="DistanceMatrixElement" type="net:DistanceMatrixElement" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="frames">
+		<xs:sequence>
+			<xs:element name="ResourceFrame" type="net:ResourceFrame"/>
+			<xs:element name="ServiceFrame" type="net:ServiceFrame"/>
+			<xs:element name="FareFrame" type="net:FareFrame" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CompositeFrame">
+		<xs:sequence>
+			<xs:element name="FrameDefaults" type="net:CompositeFrameDefaults" minOccurs="0"/>
+			<xs:element name="versions" type="net:versions"/>
+			<xs:element name="frames" type="net:frames"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="dataObjects">
+		<xs:sequence>
+			<xs:element name="CompositeFrame" type="net:CompositeFrame"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PublicationDelivery">
+		<xs:sequence>
+			<xs:element name="PublicationTimestamp" type="xs:dateTime"/>
+			<xs:element name="ParticipantRef" type="xs:string"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+			<xs:element name="dataObjects" type="net:dataObjects"/>
+		</xs:sequence>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="PricingParameterSet">
+		<xs:sequence>
+			<xs:element name="pricingRules" type="net:pricingRules" minOccurs="0"/>
+			<xs:element name="roundings" type="net:roundings" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="pricingRules">
+		<xs:sequence>
+			<xs:element name="LimitingRule" type="net:LimitingRule"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LimitingRule">
+		<xs:sequence>
+			<xs:element name="MaximumPrice" type="xs:decimal"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="roundings">
+		<xs:sequence>
+			<xs:element name="Rounding" type="net:Rounding"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Rounding">
+		<xs:sequence>
+			<xs:element name="RoundingModulus" type="xs:decimal"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="version" type="xs:string"/>
+	</xs:complexType>
+</xs:schema>
