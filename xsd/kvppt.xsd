@@ -2,12 +2,12 @@
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- Copyright:	Dit document is eigendom van Platform BISON onder de Stichting Connekt,-->
 <!--            en wordt gepubliceerd onder de Creative Commons Licentie by-nd/3.0/nl, -->
-<!--            zie http://creativecommons.org/licences/by-nd/3.0/nl -->
-<!-- Opmerking: XSD is gebaseerd op TMI8 koppelvlak PPT versie 8.1.4 -->
-<!-- Historie: -->
-<!-- v8.1.0.0: eerste release -->
-<!-- v8.1.2.0: IFFStation toegevoegd als mogelijke nameOfRefClass -->
-<!-- v8.1.3.0: aangepast aan NeTEx 1.03 -->
+<!--            zie http://creativecommons.org/licences/by-nd/3.0/nl                   -->
+<!-- Opmerking: XSD is gebaseerd op TMI8 koppelvlak PPT versie 8.1.4                   -->
+<!-- Historie:                                                                         -->
+<!-- v8.1.0.0: eerste release                                                          -->
+<!-- v8.1.2.0: IFFStation toegevoegd als mogelijke nameOfRefClass                      -->
+<!-- v8.1.3.0: aangepast aan NeTEx 1.03                                                -->
 <!-- v8.1.4:  correctie multipliciteit van DataSource/Description, FareFrame/FareFrameDefaults en FareFrameDefaults/DefaultCurrency -->
 <!--             correctie volgorde contentValidityConditions em PricingParameterSet in FareFrame -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
