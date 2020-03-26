@@ -15,7 +15,7 @@ Dit is een voorbeeld voor de levering van:
 Zie toelichting in BISON PPT document Bijlage B. 
 
 -->
-<PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex http://bison.connekt.nl/netex/NetexXML-v1.03/NeTEx_publication.xsd">
+<PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<PublicationTimestamp>2016-10-31T09:30:47.0Z</PublicationTimestamp>
 	<ParticipantRef>nvt</ParticipantRef>
 	<dataObjects>
