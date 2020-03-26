@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-<!-- Copyright: Dit document is eigendom van Platform BISON onder Stichting Connekt,         -->
+<!-- Copyright: Dit document is eigendom van Platform BISON onder Samenwerkingsverband DOVA, -->
 <!--            en wordt gepubliceerd onder de Creative Commons Licentie by-nd/3.0/nl,       -->
 <!--            zie http://creativecommons.org/licences/by-nd/3.0/nl                         -->
 <!-- Opmerking: Dit XSD is gebaseerd op TMI8 koppelvlak PPT                                  -->
 <!--                                                                                         -->
-<!-- Versie:   8.1.4a  (februari 2019)                                                       -->
+<!-- Versie:   8.1.4b  (januari 2020)                                                        -->
 <!--                                                                                         -->
 <!-- Historie:                                                                               -->
 <!-- v8.1.0.0: eerste release                                                                -->
@@ -15,6 +15,7 @@
 <!--           en FareFrameDefaults/DefaultCurrency                                          -->
 <!--           correctie volgorde contentValidityConditions, PricingParameterSet in FareFrame-->
 <!--   v8.1.4a: duidelijker aangeven root-element                                            -->
+<!--   v8.1.4b: copyright van Connekt naar DOVA                                              -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:net="http://www.netex.org.uk/netex" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:element name="PublicationDelivery">
