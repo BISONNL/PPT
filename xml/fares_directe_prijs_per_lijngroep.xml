@@ -10,7 +10,7 @@ Dit is een voorbeeld voor de levering van:
 Zie toelichting in BISON PPT document Bijlage B. 
 
 -->
-<PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex http://bison.connekt.nl/netex/NetexXML-v1.03/NeTEx_publication.xsd">
 	<PublicationTimestamp>2016-10-31T09:30:47.0Z</PublicationTimestamp>
 	<ParticipantRef>nvt</ParticipantRef>
 	<dataObjects>
@@ -104,7 +104,7 @@ Zie toelichting in BISON PPT document Bijlage B.
 					<scheduledStopPoints>
 						<!-- ===== De scheduled stop points. -->
 						<!-- ===== De informatie objecten met de doorverwijzing naar de KV1 user stops -->
-						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-001">
+						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2024">
 							<projections>
 								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-001">
 									<ProjectedPointRef ref="DataOwner:4357" nameOfRefClass="KV1UserStop"/>
@@ -114,24 +114,31 @@ Zie toelichting in BISON PPT document Bijlage B.
 								</PointProjection>
 							</projections>
 						</ScheduledStopPoint>
-						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-002">
+						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2104">
 							<projections>
 								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-003">
-									<ProjectedPointRef ref="DataOwner:4358" nameOfRefClass="KV1UserStop"/>
+									<ProjectToPointRef ref="DataOwner:4358" nameOfRefClass="KV1UserStop"/>
 								</PointProjection>
 							</projections>
 						</ScheduledStopPoint>
-						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-003">
+						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2234">
 							<projections>
 								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-004">
-									<ProjectedPointRef ref="DataOwner:4359" nameOfRefClass="KV1UserStop"/>
+									<ProjectToPointRef ref="DataOwner:4359" nameOfRefClass="KV1UserStop"/>
 								</PointProjection>
 							</projections>
 						</ScheduledStopPoint>
-						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP004">
+						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2875">
 							<projections>
 								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-005">
-									<ProjectedPointRef ref="DataOwner:4360" nameOfRefClass="KV1UserStop"/>
+									<ProjectToPointRef ref="DataOwner:4360" nameOfRefClass="KV1UserStop"/>
+								</PointProjection>
+							</projections>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2900">
+							<projections>
+								<PointProjection version="DataOwner:1.0" id="DataOwner:PP006">
+									<ProjectToPointRef ref="DataOwner:4361" nameOfRefClass="KV1UserStop"/>
 								</PointProjection>
 							</projections>
 						</ScheduledStopPoint>
@@ -204,8 +211,8 @@ Zie toelichting in BISON PPT document Bijlage B.
 								<!-- ===== De matrix elementen voor lijngroep 1 -->
 								<DistanceMatrixElement version="DataOwner:1.0" id="DataOwner:Matrix-12-001">
 									<InverseAllowed>false</InverseAllowed>
-									<StartStopPointRef ref="DataOwner:SSP-001"/>
-									<EndStopPointRef ref="DataOwner:SSP-002"/>
+									<StartStopPointRef ref="DataOwner:SSP:001"/>
+									<EndStopPointRef ref="DataOwner:SSP:002"/>
 									<prices>
 										<DistanceMatrixElementPrice version="DataOwner:1.0" id="DataOwner:DMEP001">
 											<Amount>10</Amount>
@@ -215,8 +222,8 @@ Zie toelichting in BISON PPT document Bijlage B.
 								</DistanceMatrixElement>
 								<DistanceMatrixElement version="DataOwner:1.0" id="DataOwner:Matrix-12-002">
 									<InverseAllowed>false</InverseAllowed>
-									<StartStopPointRef ref="DataOwner:SSP-002"/>
-									<EndStopPointRef ref="DataOwner:SSP-001"/>
+									<StartStopPointRef ref="DataOwner:SSP:002"/>
+									<EndStopPointRef ref="DataOwner:SSP:001"/>
 									<prices>
 										<DistanceMatrixElementPrice version="DataOwner:1.0" id="DataOwner:DMEP002">
 											<Amount>19</Amount>
@@ -241,8 +248,8 @@ Zie toelichting in BISON PPT document Bijlage B.
 								<!-- ===== De matrix elementen voor lijngroep 2 -->
 								<DistanceMatrixElement version="DataOwner:1.0" id="DataOwner:Matrix-12-003">
 									<InverseAllowed>false</InverseAllowed>
-									<StartStopPointRef ref="DataOwner:SSP-004"/>
-									<EndStopPointRef ref="DataOwner:SSP-003"/>
+									<StartStopPointRef ref="DataOwner:SSP:002"/>
+									<EndStopPointRef ref="DataOwner:SSP:003"/>
 									<prices>
 										<DistanceMatrixElementPrice version="DataOwner:1.0" id="DataOwner:DMEP003">
 											<Amount>7</Amount>
@@ -252,8 +259,8 @@ Zie toelichting in BISON PPT document Bijlage B.
 								</DistanceMatrixElement>
 								<DistanceMatrixElement version="DataOwner:1.0" id="DataOwner:Matrix-12-004">
 									<InverseAllowed>false</InverseAllowed>
-									<StartStopPointRef ref="DataOwner:SSP-003"/>
-									<EndStopPointRef ref="DataOwner:SSP-004"/>
+									<StartStopPointRef ref="DataOwner:SSP:003"/>
+									<EndStopPointRef ref="DataOwner:SSP:002"/>
 									<prices>
 										<DistanceMatrixElementPrice version="DataOwner:1.0" id="DataOwner:DMEP004">
 											<Amount>8</Amount>

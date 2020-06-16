@@ -12,7 +12,7 @@ Dit is een voorbeeld voor de levering van:
 Zie toelichting in BISON PPT document Bijlage B. 
 
 -->
-<PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<PublicationDelivery version="1.0" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex http://bison.connekt.nl/netex/NetexXML-v1.03/NeTEx_publication.xsd">
 	<PublicationTimestamp>2016-10-31T09:30:47.0Z</PublicationTimestamp>
 	<ParticipantRef>nvt</ParticipantRef>
 	<dataObjects>
@@ -94,28 +94,28 @@ Zie toelichting in BISON PPT document Bijlage B.
 						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2104">
 							<projections>
 								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-003">
-									<ProjectedPointRef ref="DataOwner:4358" nameOfRefClass="KV1UserStop"/>
+									<ProjectToPointRef ref="DataOwner:4358" nameOfRefClass="KV1UserStop"/>
 								</PointProjection>
 							</projections>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2234">
 							<projections>
 								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-004">
-									<ProjectedPointRef ref="DataOwner:4359" nameOfRefClass="KV1UserStop"/>
+									<ProjectToPointRef ref="DataOwner:4359" nameOfRefClass="KV1UserStop"/>
 								</PointProjection>
 							</projections>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2875">
 							<projections>
 								<PointProjection version="DataOwner:1.0" id="DataOwner:PP-005">
-									<ProjectedPointRef ref="DataOwner:4360" nameOfRefClass="KV1UserStop"/>
+									<ProjectToPointRef ref="DataOwner:4360" nameOfRefClass="KV1UserStop"/>
 								</PointProjection>
 							</projections>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint version="DataOwner:1.0" id="DataOwner:SSP-2900">
 							<projections>
 								<PointProjection version="DataOwner:1.0" id="DataOwner:PP006">
-									<ProjectedPointRef ref="DataOwner:4361" nameOfRefClass="KV1UserStop"/>
+									<ProjectToPointRef ref="DataOwner:4361" nameOfRefClass="KV1UserStop"/>
 								</PointProjection>
 							</projections>
 						</ScheduledStopPoint>
@@ -150,7 +150,7 @@ Zie toelichting in BISON PPT document Bijlage B.
 						</ValidityTrigger>
 						<ValidityTrigger version="DataOwner:1.0" id="DataOwner:ValidityTrigger-Prijstabel-Lijn12-002">
 							<ConditionedObjectRef ref="DataOwner:Matrix-12" nameOfRefClass="Tariff"/>
-							<TriggerObjectRef ref="DataOwner:Line012" nameOfRefClass="Line"/>
+							<TriggerObjectRef ref="DataOwner:Line-12" nameOfRefClass="Line"/>
 						</ValidityTrigger>
 						<!-- ===== Geldigheid structuur voor de scope van de afstandmatrix A, lijn 14 -->
 						<ValidityTrigger version="DataOwner:1.0" id="DataOwner:ValidityTrigger-Prijstabel-Lijn14-001">
@@ -160,7 +160,7 @@ Zie toelichting in BISON PPT document Bijlage B.
 						</ValidityTrigger>
 						<ValidityTrigger version="DataOwner:1.0" id="DataOwner:ValidityTrigger-Prijstabel-Lijn14-002">
 							<ConditionedObjectRef ref="DataOwner:Matrix-14" nameOfRefClass="Tariff"/>
-							<TriggerObjectRef ref="DataOwner:Line014" nameOfRefClass="Line"/>
+							<TriggerObjectRef ref="DataOwner:Line-14" nameOfRefClass="Line"/>
 						</ValidityTrigger>
 					</contentValidityConditions>
 					<PricingParameterSet version="DataOwner:1.0" id="DataOwner:PricingParameterSet-Default">

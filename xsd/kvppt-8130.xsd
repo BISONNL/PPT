@@ -1,34 +1,17 @@
 <?xml version="1.0"?>
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-<!-- Copyright: Dit document is eigendom van Platform BISON onder Samenwerkingsverband DOVA, -->
-<!--            en wordt gepubliceerd onder de Creative Commons Licentie by-nd/3.0/nl,       -->
-<!--            zie http://creativecommons.org/licences/by-nd/3.0/nl                         -->
-<!-- Opmerking: Dit XSD is gebaseerd op TMI8 koppelvlak PPT                                  -->
-<!--                                                                                         -->
-<!-- Versie:   8.1.4b  (januari 2020)                                                        -->
-<!--                                                                                         -->
-<!-- Historie:                                                                               -->
-<!-- v8.1.0.0: eerste release                                                                -->
-<!-- v8.1.2.0: IFFStation toegevoegd als mogelijke nameOfRefClass                            -->
-<!-- v8.1.3.0: aangepast aan NeTEx 1.03                                                      -->
-<!--   v8.1.4: correctie multipliciteit DataSource/Description, FareFrame/FareFrameDefaults  -->
-<!--           en FareFrameDefaults/DefaultCurrency                                          -->
-<!--           correctie volgorde contentValidityConditions, PricingParameterSet in FareFrame-->
-<!--   v8.1.4a: duidelijker aangeven root-element                                            -->
-<!--   v8.1.4b: copyright van Connekt naar DOVA                                              -->
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Copyright:	Dit document is eigendom van Platform BISON onder de Stichting Connekt,-->
+<!--            en wordt gepubliceerd onder de Creative Commons Licentie by-nd/3.0/nl, -->
+<!--            zie http://creativecommons.org/licences/by-nd/3.0/nl                   -->
+<!-- Opmerking: XSD is gebaseerd op TMI8 koppelvlak PPT versie 8.1.3.0                 -->
+<!-- Versie:  v8.1.3.0 (release) (09-06-2017)                                          -->
+<!-- Historie:                                                                         -->
+<!-- v8.1.0.0: eerste release                                                          -->
+<!-- v8.1.2.0: IFFStation toegevoegd als mogelijke nameOfRefClass                      -->
+<!-- v8.1.3.0: aangepast aan NeTEx 1.03                                                -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:net="http://www.netex.org.uk/netex" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:element name="PublicationDelivery">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="PublicationTimestamp" type="xs:dateTime"/>
-				<xs:element name="ParticipantRef" type="xs:string"/>
-				<xs:element name="Description" type="xs:string" minOccurs="0"/>
-				<xs:element name="dataObjects" type="net:dataObjects"/>
-			</xs:sequence>
-			<xs:attribute name="version" type="xs:string"/>
-		</xs:complexType>
-	</xs:element>
+	<xs:element name="PublicationDelivery" type="net:PublicationDelivery"/>
 	<xs:complexType name="DefaultDataSourceRef">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
@@ -43,7 +26,7 @@
 	</xs:complexType>
 	<xs:complexType name="FareFrameDefaults">
 		<xs:sequence>
-			<xs:element name="DefaultCurrency" type="xs:string"/>
+			<xs:element name="DefaultCurrency" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DataSource">
@@ -51,7 +34,7 @@
 			<xs:element name="Name" type="xs:string" minOccurs="0"/>
 			<!-- ShortName bevat de DataOwnerCode (enum) -->
 			<xs:element name="ShortName" type="xs:string"/>
-			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+			<xs:element name="Description" type="xs:string"/>
 			<xs:element name="Email" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string"/>
@@ -275,9 +258,9 @@
 		<xs:sequence>
 			<xs:element name="keyList" type="net:KeyList"/>
 			<xs:element name="Name" type="xs:string" minOccurs="0"/>
-			<xs:element name="FrameDefaults" type="net:FareFrameDefaults"/>
-			<xs:element name="contentValidityConditions" type="net:contentValidityConditions"/>
+			<xs:element name="FrameDefaults" type="net:FareFrameDefaults" minOccurs="0"/>
 			<xs:element name="PricingParameterSet" type="net:PricingParameterSet" minOccurs="0"/>
+			<xs:element name="contentValidityConditions" type="net:contentValidityConditions"/>
 			<xs:element name="tariffs" type="net:tariffs"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="optional"/>
@@ -342,6 +325,15 @@
 		<xs:sequence>
 			<xs:element name="CompositeFrame" type="net:CompositeFrame"/>
 		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PublicationDelivery">
+		<xs:sequence>
+			<xs:element name="PublicationTimestamp" type="xs:dateTime"/>
+			<xs:element name="ParticipantRef" type="xs:string"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+			<xs:element name="dataObjects" type="net:dataObjects"/>
+		</xs:sequence>
+		<xs:attribute name="version" type="xs:string"/>
 	</xs:complexType>
 	<xs:complexType name="PricingParameterSet">
 		<xs:sequence>
