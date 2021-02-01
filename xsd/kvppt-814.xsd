@@ -5,7 +5,7 @@
 <!--            zie http://creativecommons.org/licences/by-nd/3.0/nl                         -->
 <!-- Opmerking: Dit XSD is gebaseerd op TMI8 koppelvlak PPT                                  -->
 <!--                                                                                         -->
-<!-- Versie:   8.1.4b  (januari 2020)                                                        -->
+<!-- Versie:   8.1.4c  (februari 2021)                                                       -->
 <!--                                                                                         -->
 <!-- Historie:                                                                               -->
 <!-- v8.1.0.0: eerste release                                                                -->
@@ -16,8 +16,9 @@
 <!--           correctie volgorde contentValidityConditions, PricingParameterSet in FareFrame-->
 <!--   v8.1.4a: duidelijker aangeven root-element                                            -->
 <!--   v8.1.4b: copyright van Connekt naar DOVA                                              -->
+<!--   v8.1.4c: toelichting over punt als scheidingsteken decimalen                          -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:net="http://www.netex.org.uk/netex" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:net="http://www.netex.org.uk/netex" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="8.1.4">
 	<xs:element name="PublicationDelivery">
 		<xs:complexType>
 			<xs:sequence>
@@ -49,14 +50,16 @@
 	<xs:complexType name="DataSource">
 		<xs:sequence>
 			<xs:element name="Name" type="xs:string" minOccurs="0"/>
-			<!-- ShortName bevat de DataOwnerCode (enum) -->
-			<xs:element name="ShortName" type="xs:string"/>
+			<xs:element name="ShortName" type="xs:string">
+				<xs:annotation><xs:documentation>De ShortName bevat de DataOwnerCode (enum)</xs:documentation></xs:annotation>
+			</xs:element>
 			<xs:element name="Description" type="xs:string" minOccurs="0"/>
 			<xs:element name="Email" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation><xs:documentation>Het id is als volgt opgebouwd: "BISON:DataSource:[DataOwnerCode]"</xs:documentation></xs:annotation>
+		</xs:attribute>
 		<xs:attribute name="version" type="xs:string"/>
-		<!-- id is als volgt opgebouwd:  "BISON:DataSource:<DataOwnerCode>" -->
 	</xs:complexType>
 	<xs:complexType name="dataSources">
 		<xs:sequence>
@@ -216,6 +219,7 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeographicalIntervalPrice">
+		<xs:annotation><xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation></xs:annotation>
 		<xs:sequence>
 			<xs:element name="Amount" type="xs:float"/>
 			<xs:element name="Units" type="xs:float"/>
@@ -224,6 +228,7 @@
 		<xs:attribute name="version" type="xs:string" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="DistanceMatrixElementPrice">
+		<xs:annotation><xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation></xs:annotation>
 		<xs:sequence>
 			<xs:element name="Amount" type="xs:float"/>
 			<xs:element name="Units" type="xs:float"/>
@@ -358,7 +363,9 @@
 	</xs:complexType>
 	<xs:complexType name="LimitingRule">
 		<xs:sequence>
-			<xs:element name="MaximumPrice" type="xs:decimal"/>
+			<xs:element name="MaximumPrice" type="xs:decimal">
+				<xs:annotation><xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation></xs:annotation>
+			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string"/>
 		<xs:attribute name="version" type="xs:string"/>
@@ -370,7 +377,9 @@
 	</xs:complexType>
 	<xs:complexType name="Rounding">
 		<xs:sequence>
-			<xs:element name="RoundingModulus" type="xs:decimal"/>
+			<xs:element name="RoundingModulus" type="xs:decimal">
+				<xs:annotation><xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation></xs:annotation>
+			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string"/>
 		<xs:attribute name="version" type="xs:string"/>
