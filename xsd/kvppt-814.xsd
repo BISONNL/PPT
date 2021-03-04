@@ -51,13 +51,17 @@
 		<xs:sequence>
 			<xs:element name="Name" type="xs:string" minOccurs="0"/>
 			<xs:element name="ShortName" type="xs:string">
-				<xs:annotation><xs:documentation>De ShortName bevat de DataOwnerCode (enum)</xs:documentation></xs:annotation>
+				<xs:annotation>
+					<xs:documentation>De ShortName bevat de DataOwnerCode (enum)</xs:documentation>
+				</xs:annotation>
 			</xs:element>
 			<xs:element name="Description" type="xs:string" minOccurs="0"/>
 			<xs:element name="Email" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string">
-			<xs:annotation><xs:documentation>Het id is als volgt opgebouwd: "BISON:DataSource:[DataOwnerCode]"</xs:documentation></xs:annotation>
+			<xs:annotation>
+				<xs:documentation>Het id is als volgt opgebouwd: "BISON:DataSource:[DataOwnerCode]"</xs:documentation>
+			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="version" type="xs:string"/>
 	</xs:complexType>
@@ -133,7 +137,11 @@
 	</xs:complexType>
 	<xs:complexType name="Line">
 		<xs:sequence>
-			<xs:element name="keyList" type="net:KeyList"/>
+			<xs:element name="keyList" type="net:KeyList">
+				<xs:annotation>
+					<xs:documentation>Gebruik hier Key="KV1LijnNummer" of "ProprietyLineNummer".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="Name" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="optional"/>
@@ -219,7 +227,9 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeographicalIntervalPrice">
-		<xs:annotation><xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation></xs:annotation>
+		<xs:annotation>
+			<xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation>
+		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="Amount" type="xs:float"/>
 			<xs:element name="Units" type="xs:float"/>
@@ -228,7 +238,9 @@
 		<xs:attribute name="version" type="xs:string" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="DistanceMatrixElementPrice">
-		<xs:annotation><xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation></xs:annotation>
+		<xs:annotation>
+			<xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation>
+		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="Amount" type="xs:float"/>
 			<xs:element name="Units" type="xs:float"/>
@@ -261,7 +273,11 @@
 	</xs:complexType>
 	<xs:complexType name="Tariff">
 		<xs:sequence>
-			<xs:element name="keyList" type="net:KeyList"/>
+			<xs:element name="keyList" type="net:KeyList">
+				<xs:annotation>
+					<xs:documentation>Gebruik hier Key="TariffType".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="Name" type="xs:string" minOccurs="0"/>
 			<xs:choice>
 				<xs:element name="geographicalIntervals" type="net:geographicalIntervals"/>
@@ -278,7 +294,11 @@
 	</xs:complexType>
 	<xs:complexType name="FareFrame">
 		<xs:sequence>
-			<xs:element name="keyList" type="net:KeyList"/>
+			<xs:element name="keyList" type="net:KeyList">
+				<xs:annotation>
+					<xs:documentation>Gebruik hier Key="EntranceRateWrtCurrency". Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="Name" type="xs:string" minOccurs="0"/>
 			<xs:element name="FrameDefaults" type="net:FareFrameDefaults"/>
 			<xs:element name="contentValidityConditions" type="net:contentValidityConditions"/>
@@ -364,7 +384,9 @@
 	<xs:complexType name="LimitingRule">
 		<xs:sequence>
 			<xs:element name="MaximumPrice" type="xs:decimal">
-				<xs:annotation><xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation></xs:annotation>
+				<xs:annotation>
+					<xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation>
+				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string"/>
@@ -378,7 +400,9 @@
 	<xs:complexType name="Rounding">
 		<xs:sequence>
 			<xs:element name="RoundingModulus" type="xs:decimal">
-				<xs:annotation><xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation></xs:annotation>
+				<xs:annotation>
+					<xs:documentation>Gebruik een PUNT als scheidingsteken van de decimalen.</xs:documentation>
+				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string"/>
